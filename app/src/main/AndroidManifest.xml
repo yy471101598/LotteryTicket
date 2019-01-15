@@ -20,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Holo.Light.NoActionBar">
         <activity
-            android:name="wy.com.ticket.ui.HostActivity"
+            android:name="wy.com.ticket.ui.me.HelpActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             >

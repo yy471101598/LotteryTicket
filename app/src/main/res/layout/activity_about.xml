@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <include layout="@layout/title_oneicon_back"></include>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@color/linecolor"
+            ></View>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_33"
+            />
+
+        <TextView
+            android:id="@+id/tv_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="版本 V1.0.0"
+            android:textColor="#808080"
+            android:textSize="@dimen/sp_12"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="@dimen/dp_29"
+            android:layout_marginTop="@dimen/dp_24"
+            android:layout_marginRight="@dimen/dp_29"
+            android:background="@color/linecolor"
+            ></View>
+
+        <TextView
+            android:id="@+id/tv_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_29"
+            android:layout_marginTop="@dimen/dp_19"
+            android:layout_marginRight="@dimen/dp_29"
+            android:layout_marginBottom="@dimen/dp_19"
+            android:lineSpacingExtra="@dimen/dp_3"
+            android:text="BEX 是用区块链证券协议（Blockchain Securities Protocol, BSP）来描述区块链及现实世界的任何权 益，通过结构化（Structuring）及标准化 （Standardizing）的方式对权益进行重组并以此为 基础发行区块链证券（Rights-backed BlockchainSecurities, RBS）区块链证券协议 （Blockchain Securities Protocol, BSP）来描述区 块链及现实世界的任何权益，通过结构化及标准化 （StandBEX 是用区块链证券协议（Blockchain Securities Protocol,BSP）通过结构化及标准化的 方式对权益进行重组并以此为基础发行区块链证券"
+            android:textColor="@color/text66"
+            android:textSize="@dimen/sp_13"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="@dimen/dp_29"
+            android:layout_marginRight="@dimen/dp_29"
+            android:background="@color/linecolor"
+            ></View>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_19"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_29"
+                android:text="官网："
+                android:textColor="@color/text66"
+                android:textSize="@dimen/sp_13"
+                />
+
+            <TextView
+                android:id="@+id/tv_guanwang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_2"
+                android:text="www.bossex.com"
+                android:textColor="@color/theme_color"
+                android:textSize="@dimen/sp_13"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_29"
+                android:text="微博："
+                android:textColor="@color/text66"
+                android:textSize="@dimen/sp_13"
+                />
+
+            <TextView
+                android:id="@+id/tv_weibo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_2"
+                android:text="BOSS EX"
+                android:textColor="@color/theme_color"
+                android:textSize="@dimen/sp_13"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:text="Copyright © 2019年 xxx. All rights reserved."
+        android:textColor="#b3b3b3"
+        android:textSize="@dimen/sp_12"
+        />
+</RelativeLayout>

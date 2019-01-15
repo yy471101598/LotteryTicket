@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_206"
+        android:background="@drawable/shap_language"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_29"
+            android:layout_marginTop="@dimen/dp_27"
+            android:text="充值提现规则"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/sp_15"
+            />
+
+        <TextView
+            android:id="@+id/tv_title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_29"
+            android:layout_marginTop="@dimen/dp_14"
+            android:text="充值到平台的钱会换算成平台币（BEX）"
+            android:textColor="@color/text80"
+            android:textSize="@dimen/sp_12"
+            />
+
+        <TextView
+            android:id="@+id/tv_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_29"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="平台币（BEX）提现会换算成人民币"
+            android:textColor="@color/text80"
+            android:textSize="@dimen/sp_12"
+            />
+
+        <TextView
+            android:id="@+id/tv_title3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_29"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="人民币和 BEX 币以 1:30 的比例换算"
+            android:textColor="@color/text80"
+            android:textSize="@dimen/sp_12"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_19"
+            android:layout_marginRight="@dimen/dp_10"
+            android:background="@color/linecolor"
+            ></View>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_known"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="知道了"
+                    android:textColor="@color/theme_color"
+                    android:textSize="@dimen/sp_13"
+                    />
+            </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

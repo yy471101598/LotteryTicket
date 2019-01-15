@@ -1,119 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/backgroud_color"
-    android:orientation="vertical">
-
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="80dp"
-        android:scaleType="fitXY"
-        android:id="@+id/imageView" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="25dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
+
+        <include layout="@layout/title_oneicon_back"></include>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_48"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="区块链交易平台"
+            android:textColor="#808080"
+            android:textSize="@dimen/sp_12"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_14"
+            android:layout_marginTop="@dimen/dp_50"
+            android:layout_marginRight="@dimen/dp_14"
+            android:background="@drawable/shap_login_bg"
+            android:orientation="vertical">
 
             <RelativeLayout
-                android:id="@+id/rl_shoper"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginLeft="@dimen/dp_27"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginRight="@dimen/dp_27"
                 >
 
-                <TextView
-                    android:id="@+id/tv_shop"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:textColor="@color/theme_color"
-                    android:textSize="15sp" />
+
+                <wy.com.ticket.views.ClearEditText
+                    android:id="@+id/et_login_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_25"
+                    android:layout_marginRight="@dimen/dp_25"
+                    android:background="@null"
+                    android:drawableRight="@mipmap/button_delete"
+                    android:hint="请输入帐号"
+                    android:textColor="@color/textcolor"
+                    android:textColorHint="@color/textcc"
+                    android:textSize="@dimen/sp_13"/>
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/rl_waiter"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="@dimen/dp_27"
+                android:layout_marginRight="@dimen/dp_27"
+                android:background="@color/linecolor"
+                ></View>
 
-                android:layout_weight="1"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginLeft="@dimen/dp_27"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginRight="@dimen/dp_27"
+                >
+
+
+                <wy.com.ticket.views.ClearEditText
+                    android:id="@+id/et_login_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_25"
+                    android:layout_marginRight="@dimen/dp_25"
+                    android:background="@null"
+                    android:drawableRight="@mipmap/button_delete"
+                    android:hint="请输入密码"
+                    android:inputType="textPassword"
+                    android:textColor="@color/textcolor"
+                    android:textColorHint="@color/textcc"
+                    android:textSize="@dimen/sp_13"/>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="@dimen/dp_27"
+                android:layout_marginRight="@dimen/dp_27"
+                android:background="@color/linecolor"
+                ></View>
+
+            <RelativeLayout
+                android:id="@+id/rl_login"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_42"
+                android:layout_marginLeft="@dimen/dp_27"
+                android:layout_marginTop="@dimen/dp_24"
+                android:layout_marginRight="@dimen/dp_27"
+                android:layout_marginBottom="@dimen/dp_30"
+                android:background="@drawable/shap_login"
                 >
 
                 <TextView
-                    android:id="@+id/tv_waiter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:textColor="@color/text60"
-                    android:textSize="15sp" />
+                    android:text="登录"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_13"/>
             </RelativeLayout>
         </LinearLayout>
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-
-            <wy.com.ticket.views.ClearEditText
-                android:id="@+id/et_login_password"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="20dp"
-                android:background="@null"
-                android:drawableRight="@mipmap/button_delete"
-                android:hint=""
-                android:paddingLeft="15dp"
-                android:inputType="textPassword"
-                android:textColor="@color/textcolor"
-                android:textColorHint="@color/textcc"
-                android:textSize="15sp" />
-        </RelativeLayout>
     </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/rl_login"
+    <LinearLayout
+        android:id="@+id/li_register"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:gravity="center"
+        android:orientation="horizontal"
         >
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:textColor="@color/white"
-            android:textSize="15sp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="20dp">
+            android:layout_height="wrap_content"
+            android:text="还没有账号？"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/sp_12"/>
 
         <TextView
-            android:id="@+id/tv_login_forget"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:paddingLeft="20dp"
-            android:textColor="@color/text60"
-            android:textSize="15sp" />
-    </RelativeLayout>
-</LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_1"
+            android:text="立即注册"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/sp_12"/>
+    </LinearLayout>
+</RelativeLayout>
