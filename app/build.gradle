@@ -3,7 +3,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "wy.com.ticket"
+        applicationId "com.lottery.bossex"
         minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
@@ -38,6 +38,8 @@ dependencies {
     compile 'com.zzhoujay.richtext:richtext:2.5.2'
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-12'
     compile 'com.facebook.fresco:fresco:0.12.0'
+    compile 'com.gyf.immersionbar:immersionbar:2.3.3-beta15'
+    compile files('libs/volly-1.0.11.jar')
 }
 apt {
     arguments {

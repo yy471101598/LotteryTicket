@@ -11,8 +11,9 @@
     <color name="text66">#666666</color>
     <color name="text99">#999999</color>
     <color name="textcc">#cccccc</color>
-    <color name="linecolor">#e5e5e5</color>
+    <color name="linecolor">#e6e6e6</color>
     <color name="text49">#494949</color>
+    <color name="texte5">#e5e5e5</color>
     <color name="text0050">#80000000</color>
     <color name="text89">#898989</color>
     <color name="text80">#808080</color>
@@ -24,13 +25,21 @@
     <color name="his_top">#606060</color>
     <color name="white_loading">#00ffffff</color>
     <color name="white">#ffffff</color>
+    <color name="buychose">#F45B34</color>
     <color name="theme_color">#FA703C</color>
     <color name="origecolor">#FF5D4B</color>
+    <color name="tixianyellow">#FFC53D</color>
     <color name="origef0">#FA703C</color>
+    <color name="color_fa">#FAFAFA</color>
     <color name="tv_order_D">#ffc83d</color>
     <color name="view_color">#cccccc</color>
     <color name="blue">#1197D9</color>
     <color name="code_color">#ff9f0f</color>
     <color name="green">#20AC38</color>
     <color name="login_not">#E5E5E5</color>
+
+
+    <color name="shadow_end_color">#00000000</color>
+    <color name="shadow_mid_color">#04000000</color>
+    <color name="shadow_start_color">#08000000</color>
 </resources>

@@ -99,7 +99,7 @@
             android:textSize="@dimen/sp_14"
             />
 
-        <wy.com.ticket.views.SlipButton
+        <com.lottery.bossex.views.SlipButton
             android:id="@+id/slipbutton"
             android:layout_width="46dp"
             android:layout_height="25dp"

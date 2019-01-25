@@ -14,7 +14,7 @@
         android:background="@color/linecolor"
         ></View>
 
-    <wy.com.ticket.views.tablayout.XTabLayout
+    <com.lottery.bossex.views.tablayout.XTabLayout
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_48"

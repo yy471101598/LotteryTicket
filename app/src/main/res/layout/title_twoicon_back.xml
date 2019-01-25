@@ -34,9 +34,9 @@
         android:id="@+id/rl_right"
         android:layout_width="@dimen/dp_48"
         android:layout_height="@dimen/dp_27"
-        android:layout_marginRight="@dimen/dp_14"
-        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/dp_14"
         android:background="@drawable/shap_save"
         >
 

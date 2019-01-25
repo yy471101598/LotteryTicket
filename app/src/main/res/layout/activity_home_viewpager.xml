@@ -7,7 +7,6 @@
         android:id="@+id/viewpager_img"
         android:layout_width="match_parent"
         android:layout_height="185dp"
-        android:background="@mipmap/banner"
         android:scaleType="fitXY"
         />
 

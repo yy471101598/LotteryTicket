@@ -1,37 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_margin="0.0dip"
-    android:background="@color/white">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentTop="true"
-        android:paddingTop="12dp"
-        android:gravity="center"
-        android:layout_alignParentStart="true">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
-        <ImageView
-            android:id="@+id/iv_item"
-            android:layout_width="40.0dip"
-            android:layout_height="40.0dip"
-            android:layout_centerHorizontal="true"
-            android:background="@mipmap/zhikaotong"
-            android:contentDescription="@string/app_name" />
+        >
 
-        <TextView
-            android:id="@+id/tv_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/iv_item"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5.0dip"
-            android:maxLines="1"
-            android:text="111"
-            android:textColor="@color/textcolor"
-            android:textSize="14.0sp" />
+        <RelativeLayout
+            android:id="@+id/rl_bg"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_94"
+            android:layout_marginLeft="@dimen/dp_14"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginRight="@dimen/dp_14"
+            android:layout_marginBottom="@dimen/dp_5"
+            >
+
+            <ImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginTop="@dimen/dp_10"
+                />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_24"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/dp_14"
+                android:layout_marginBottom="@dimen/dp_12"
+                android:background="@drawable/shap_homeitem"
+                >
+
+                <TextView
+                    android:id="@+id/tv_ordertime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:paddingLeft="@dimen/dp_12"
+                    android:paddingRight="@dimen/dp_12"
+                    android:text="一天 10:48：43"
+                    android:textColor="#a8a8a8"
+                    android:textSize="@dimen/sp_12"
+
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_buy"
+                android:layout_width="@dimen/dp_96"
+                android:layout_height="@dimen/dp_29"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="@dimen/dp_14"
+                android:layout_marginBottom="@dimen/dp_14"
+                android:background="@drawable/shap_login"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="购买彩票"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_12"
+                    />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp_14"
+                android:layout_marginRight="@dimen/dp_14"
+                android:gravity="bottom"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/sp_16"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_4"
+                    android:text="500"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/sp_22"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_4"
+                    android:text="万"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/sp_12"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
     </RelativeLayout>
-
-</RelativeLayout>
+</LinearLayout>

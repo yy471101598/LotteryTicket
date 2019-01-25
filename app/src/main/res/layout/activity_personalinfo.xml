@@ -20,7 +20,7 @@
         android:layout_marginTop="@dimen/dp_35"
         >
 
-        <wy.com.ticket.views.RoundImageView
+        <com.lottery.bossex.views.RoundImageView
             android:id="@+id/img_icon"
             android:layout_width="@dimen/dp_96"
             android:layout_height="@dimen/dp_96"

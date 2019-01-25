@@ -2,4 +2,21 @@
     <string name="app_name">高薪教育</string>
     <string name="scan_text">请扫描消费者的二维码</string>
     <string name="code_title">扫码支付</string>
+    <string name="input_account">请输入帐号</string>
+    <string name="input_password">请输入密码</string>
+    <string name="login_top">区块链交易平台</string>
+    <string name="login">登录</string>
+    <string name="noaccount">还没有账号？</string>
+    <string name="goregist">立即注册</string>
+    <string name="registacc">注册帐号</string>
+    <string name="inputyp">请输入邮箱或者手机号</string>
+    <string name="inputcode">请输入验证码</string>
+    <string name="obtaincode">获取验证码</string>
+    <string name="readxy">我己阅读《隐私保护》协议并同意</string>
+    <string name="pleaseread">请阅读《隐私保护》协议并同意</string>
+    <string name="register">注册</string>
+    <string name="goucai">购彩</string>
+    <string name="kaijiang">开奖</string>
+    <string name="me">我的</string>
+    <string name="aginout">再按一次退出</string>
 </resources>
