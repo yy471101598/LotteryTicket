@@ -11,15 +11,14 @@ import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 
 import com.gyf.barlibrary.ImmersionBar;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
 import com.lottery.bossex.dialog.LoadingDialog;
 import com.lottery.bossex.http.PermissionListener;
 import com.lottery.bossex.tools.ObtainSystemLanguage;
 import com.lottery.bossex.tools.PreferenceHelper;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 
 /**
@@ -57,11 +56,11 @@ public abstract class BaseActivity extends Activity {
         switch (language) {
             case "zh":
                 configuration.locale = Locale.CHINA;
-                PreferenceHelper.write(ac, "numc", "lagavage", "zh");
+                PreferenceHelper.write(ac, "lottery", "lagavage", "zh");
                 break;
             case "en":
                 configuration.locale = Locale.ENGLISH;
-                PreferenceHelper.write(ac, "numc", "lagavage", "en");
+                PreferenceHelper.write(ac, "lottery", "lagavage", "en");
                 break;
             case "vi":
                 configuration.locale = new Locale("vi");

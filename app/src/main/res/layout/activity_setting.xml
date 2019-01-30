@@ -5,11 +5,12 @@
               android:background="@color/white"
               android:orientation="vertical">
 
-    <include layout="@layout/title_oneicon_back"></include>
+    <include layout="@layout/title_oneicon_back_md"></include>
 
     <View
+        android:id="@+id/view_line"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="0.5dp"
         android:background="@color/linecolor"
         ></View>
 
@@ -47,6 +48,7 @@
         android:layout_marginRight="@dimen/dp_29"
         android:background="@color/linecolor"
         ></View>
+
     <RelativeLayout
         android:id="@+id/language"
         android:layout_width="match_parent"
@@ -81,6 +83,7 @@
         android:layout_marginRight="@dimen/dp_29"
         android:background="@color/linecolor"
         ></View>
+
     <RelativeLayout
         android:id="@+id/rl_safety"
         android:layout_width="match_parent"
@@ -116,6 +119,7 @@
         android:layout_marginRight="@dimen/dp_29"
         android:background="@color/linecolor"
         ></View>
+
     <RelativeLayout
         android:id="@+id/rl_newversion"
         android:layout_width="match_parent"
@@ -137,8 +141,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:text="V1.0.0"
             android:textColor="#b3b3b3"
             android:textSize="@dimen/sp_14"

@@ -3,10 +3,11 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/white"
+              android:fitsSystemWindows="true"
               android:orientation="vertical"
     >
 
-    <ScrollView
+    <com.lottery.bossex.views.StickyScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none"
@@ -18,25 +19,44 @@
             android:orientation="vertical"
             >
 
-            <FrameLayout
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/dp_268"
+                android:background="@mipmap/lottery"
                 android:orientation="vertical"
                 >
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_268"
-                    android:background="@mipmap/lottery"
+                    android:layout_height="@dimen/dp_132"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/dp_31"
                     android:orientation="vertical"
+                    android:tag="sticky"
                     >
+
+                    <TextView
+                        android:id="@+id/tv_stickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/dp_14"
+                        android:layout_marginBottom="@dimen/dp_14"
+                        android:text="竞彩大奖"
+                        android:textColor="@color/textcolor"
+                        android:textSize="@dimen/sp_16"
+                        android:visibility="gone"
+                        />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dp_34"
+                        android:layout_alignParentBottom="true"
                         android:layout_marginLeft="@dimen/dp_14"
-                        android:layout_marginTop="@dimen/dp_190"
                         android:layout_marginRight="@dimen/dp_14"
+                        android:layout_marginBottom="@dimen/dp_14"
                         android:background="@drawable/shap_buysearch"
                         android:gravity="center"
                         android:orientation="horizontal"
@@ -68,23 +88,19 @@
 
 
                     </LinearLayout>
-                </LinearLayout>
+                </RelativeLayout>
+            </RelativeLayout>
 
-                <com.lottery.bossex.views.MyListView
-                    android:id="@+id/listview"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/dp_14"
-                    android:layout_marginTop="@dimen/dp_238"
-                    android:layout_marginRight="@dimen/dp_14"
-                    android:cacheColorHint="#00000000"
-                    android:divider="@color/white"
-                    android:dividerHeight="0dp"
-                    android:scrollbars="none"
-                    ></com.lottery.bossex.views.MyListView>
-            </FrameLayout>
-
-
+            <com.lottery.bossex.views.MyListView
+                android:id="@+id/listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_238"
+                android:cacheColorHint="#00000000"
+                android:divider="@color/white"
+                android:dividerHeight="0dp"
+                android:scrollbars="none"
+                ></com.lottery.bossex.views.MyListView>
         </LinearLayout>
-    </ScrollView>
+    </com.lottery.bossex.views.StickyScrollView>
 </LinearLayout>

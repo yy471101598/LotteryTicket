@@ -1,17 +1,20 @@
 package com.lottery.bossex.ui.me;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import com.lottery.bossex.R;
+import com.lottery.bossex.tools.NoDoubleClickListener;
+import com.lottery.bossex.tools.ShadowUtils;
 import com.lottery.bossex.ui.BaseActivity;
 import com.lottery.bossex.views.SlipButton;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class SettingActivity extends BaseActivity {
     @Bind(R.id.img_left)
@@ -32,31 +35,43 @@ public class SettingActivity extends BaseActivity {
     RelativeLayout mRlSafety;
     @Bind(R.id.rl_newversion)
     RelativeLayout mRlNewversion;
+    @Bind(R.id.view_line)
+    View mViewLine;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         ButterKnife.bind(this);
+        ShadowUtils.setShadowBackgroud(ac, res, mViewLine);
         mSlipbutton.SetOnChangedListener(new SlipButton.OnChangedListener() {
             @Override
             public void OnChanged(boolean CheckState) {
             }
         });
+        initEvent();
     }
 
-    @OnClick({R.id.rl_left, R.id.rl_password, R.id.language, R.id.rl_newversion})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.rl_left:
+    private void initEvent() {
+        mRlLeft.setOnClickListener(new NoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View view) {
                 finish();
-                break;
-            case R.id.rl_password:
-                break;
-            case R.id.language:
-                break;
-            case R.id.rl_newversion:
-                break;
-        }
+            }
+        });
+        mRlPassword.setOnClickListener(new NoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View view) {
+                Intent intent=new Intent(ac,ChangePwdActivity.class);
+                startActivity(intent);
+            }
+        });
+        mLanguage.setOnClickListener(new NoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View view) {
+                Intent intent=new Intent(ac,LanguageActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

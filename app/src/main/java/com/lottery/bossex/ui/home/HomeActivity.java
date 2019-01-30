@@ -8,13 +8,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.lottery.bossex.R;
 import com.lottery.bossex.bean.Home;
 import com.lottery.bossex.bean.HomeBannerMsg;
 import com.lottery.bossex.ui.BaseActivity;
+import com.lottery.bossex.views.MyListView;
 import com.lottery.bossex.views.PagingScrollHelper;
 
 import java.util.ArrayList;
@@ -33,8 +33,10 @@ public class HomeActivity extends BaseActivity implements PagingScrollHelper.onP
     LinearLayout mLiSearch;
     @Bind(R.id.recyclerview)
     RecyclerView mRecyclerview;
-    @Bind(R.id.listview)
-    ListView mListview;
+    @Bind(R.id.ll)
+    LinearLayout mLl;
+    @Bind(R.id.mylistview)
+    MyListView mMylistview;
     private Gson gson;
     private AtomicInteger what = new AtomicInteger(0);
     /**
@@ -64,7 +66,7 @@ public class HomeActivity extends BaseActivity implements PagingScrollHelper.onP
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lottery);
+        setContentView(R.layout.activity_home);
         ac = this;
         ButterKnife.bind(this);
         gson = new Gson();
@@ -74,7 +76,7 @@ public class HomeActivity extends BaseActivity implements PagingScrollHelper.onP
         mRecyclerview.setLayoutManager(layoutManager);
         mRecyclerview.setAdapter(recyAdapter);
         mHomeAdapter = new HomeAdapter(ac, homelist);
-        mListview.setAdapter(mHomeAdapter);
+        mMylistview.setAdapter(mHomeAdapter);
 //        scrollHelper.setUpRecycleView(mRecyclerview);
 //        scrollHelper.setOnPageChangeListener(this);
 //        mRecyclerview.setHorizontalScrollBarEnabled(true);

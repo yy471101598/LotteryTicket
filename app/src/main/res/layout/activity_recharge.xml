@@ -14,6 +14,7 @@
         ></View>
 
     <LinearLayout
+        android:id="@+id/li_bg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp_14"
@@ -34,15 +35,17 @@
 
 
             <TextView
+                android:id="@+id/tv_moneyz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_2"
-                android:text="500"
+                android:text="00"
                 android:textColor="@color/textcolor"
                 android:textSize="@dimen/sp_24"
                 />
 
             <TextView
+                android:id="@+id/tv_moneyf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=".00"
@@ -75,9 +78,11 @@
                 />
 
             <ImageView
+                android:id="@+id/img_tishi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_5"
+                android:background="@mipmap/icon_tishi"
                 />
 
         </LinearLayout>
@@ -138,6 +143,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/dp_29"
             android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_marginRight="@dimen/dp_24"
             android:orientation="horizontal"
             >
 
@@ -146,6 +153,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:background="@mipmap/icon_wx"
                 />
 
             <TextView
@@ -166,6 +174,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/dp_24"
+                android:background="@mipmap/round_true"
                 />
 
         </RelativeLayout>
@@ -176,6 +185,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/dp_29"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_marginRight="@dimen/dp_24"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             >
@@ -185,6 +196,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:background="@mipmap/icon_ali"
                 />
 
             <TextView
@@ -205,6 +217,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/dp_24"
+                android:background="@mipmap/round_false"
                 />
 
         </RelativeLayout>

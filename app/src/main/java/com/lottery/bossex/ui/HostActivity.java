@@ -17,13 +17,15 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Locale;
-
 import com.lottery.bossex.R;
 import com.lottery.bossex.tools.ActivityStack;
 import com.lottery.bossex.tools.ObtainSystemLanguage;
 import com.lottery.bossex.tools.PreferenceHelper;
 import com.lottery.bossex.ui.home.HomeActivity;
+import com.lottery.bossex.ui.lottery.LotteryActivity;
+import com.lottery.bossex.ui.me.MeActivity;
+
+import java.util.Locale;
 
 
 public class HostActivity extends TabActivity implements OnClickListener {
@@ -41,12 +43,12 @@ public class HostActivity extends TabActivity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
+        ac = this;
         initLocaleLanguage();
         setContentView(R.layout.activity_host);
-        ac = this;
 //        StatusBarCompat.setStatusBarColor(ac, getResources().getColor(R.color.theme_color), 112);
         initView();
-        ActivityStack.create().addActivity(ac);
+        ActivityStack.create().addActivity(HostActivity.this);
         initEvent();
         // 重置底部导航拦
         resetTab();
@@ -76,11 +78,11 @@ public class HostActivity extends TabActivity implements OnClickListener {
         switch (language) {
             case "zh":
                 configuration.locale = Locale.CHINA;
-                PreferenceHelper.write(ac, "numc", "lagavage", "zh");
+                PreferenceHelper.write(ac, "lottery", "lagavage", "zh");
                 break;
             case "en":
                 configuration.locale = Locale.ENGLISH;
-                PreferenceHelper.write(ac, "numc", "lagavage", "en");
+                PreferenceHelper.write(ac, "lottery", "lagavage", "en");
                 break;
             case "vi":
                 configuration.locale = new Locale("vi");
@@ -207,8 +209,10 @@ public class HostActivity extends TabActivity implements OnClickListener {
         tabhost = getTabHost();
         tabhost.addTab(tabhost.newTabSpec(TAB_HOME).setIndicator(TAB_HOME)
                 .setContent(new Intent(this, HomeActivity.class)));
+        tabhost.addTab(tabhost.newTabSpec(TAB_CENTER).setIndicator(TAB_CENTER)
+                .setContent(new Intent(this, LotteryActivity.class)));
         tabhost.addTab(tabhost.newTabSpec(TAB_ME).setIndicator(TAB_ME)
-                .setContent(new Intent(this, HomeActivity.class)));
+                .setContent(new Intent(this, MeActivity.class)));
     }
 
     /**

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LotteryTicket.iml" filepath="$PROJECT_DIR$/LotteryTicket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NOLotteryTicket.iml" filepath="$PROJECT_DIR$/NOLotteryTicket.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/base_library_pullToRefresh/base_library_pullToRefresh.iml" filepath="$PROJECT_DIR$/base_library_pullToRefresh/base_library_pullToRefresh.iml" />
     </modules>

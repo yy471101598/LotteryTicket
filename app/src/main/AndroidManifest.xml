@@ -56,6 +56,71 @@
             android:exported="false"
             android:label="@string/app_name"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.lottery.bossex.ui.me.MeActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.lottery.bossex.ui.home.HomeActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.lottery.bossex.ui.lottery.LotteryActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.lottery.bossex.ui.me.TixianActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.lottery.bossex.ui.me.RechargeActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.lottery.bossex.ui.me.PersonalActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.lottery.bossex.ui.me.ShimingRenzhengActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.lottery.bossex.ui.me.OrderDetailActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.lottery.bossex.ui.me.FrendActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.lottery.bossex.ui.me.SettingActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.lottery.bossex.ui.me.HelpActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.lottery.bossex.ui.me.ChangePwdActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.lottery.bossex.ui.me.LanguageActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

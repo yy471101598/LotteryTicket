@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <include
+        layout="@layout/title_oneicon_back_md"
+        ></include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_6"
+        android:layout_marginRight="@dimen/dp_24"
+        android:layout_marginBottom="@dimen/dp_19"
+        >
+
+        <LinearLayout
+            android:id="@+id/li_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选择彩票号码"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/sp_18"
+                />
+
+            <TextView
+                android:id="@+id/cur_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:text="1"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/sp_19"
+                />
+
+            <TextView
+                android:id="@+id/all_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/sp_13"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/li_c"
+            android:layout_marginTop="@dimen/dp_5"
+            android:text="6个常规号码，一个特殊号码"
+            android:textColor="@color/textB3"
+            android:textSize="@dimen/sp_12"
+            />
+
+        <RelativeLayout
+            android:id="@+id/rl_jichose"
+            android:layout_width="@dimen/dp_77"
+            android:layout_height="@dimen/dp_31"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shap_metixian"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="机选"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_12"
+                />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/img_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_toLeftOf="@id/rl_jichose"
+            />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dp_14"
+        ></android.support.v7.widget.RecyclerView>
+</LinearLayout>

@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.lottery.bossex.R;
+import com.lottery.bossex.tools.ActivityStack;
 import com.lottery.bossex.tools.NoDoubleClickListener;
 import com.lottery.bossex.tools.ShadowUtils;
 import com.lottery.bossex.tools.ToastUtils;
@@ -42,7 +43,7 @@ public class LoginActivity extends BaseActivity {
         mRlLeft.setOnClickListener(new NoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View view) {
-                finish();
+                ActivityStack.create().AppExit(ac);
             }
         });
 

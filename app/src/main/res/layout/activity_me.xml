@@ -3,6 +3,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/white"
+              android:fitsSystemWindows="true"
               android:orientation="vertical">
 
     <ScrollView
@@ -359,8 +360,8 @@
                 android:layout_height="0.5dp"
                 android:layout_marginLeft="@dimen/dp_29"
                 android:layout_marginRight="@dimen/dp_29"
-                android:background="@color/linecolor"
                 android:layout_marginBottom="@dimen/dp_47"
+                android:background="@color/linecolor"
                 ></View>
         </LinearLayout>
     </ScrollView>

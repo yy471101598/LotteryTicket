@@ -9,13 +9,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.lottery.bossex.R;
+import com.lottery.bossex.bean.Home;
+import com.lottery.bossex.tools.ShadowUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import com.lottery.bossex.R;
-import com.lottery.bossex.bean.Home;
 
 public class HomeAdapter extends BaseAdapter {
     private Context context;
@@ -55,29 +57,26 @@ public class HomeAdapter extends BaseAdapter {
         // TODO Auto-generated method stub
         ViewHolder vh = null;
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.item_lottery, null);
+            convertView = inflater.inflate(R.layout.item_home, null);
             vh = new ViewHolder(convertView);
             convertView.setTag(vh);
         } else {
             vh = (ViewHolder) convertView.getTag();
         }
         final Home home = list.get(position);
+        ShadowUtils.setShadowBackgroud(context, context.getResources(), vh.mRlBg);
         return convertView;
     }
 
-    class ViewHolder {
+    static class ViewHolder {
         @Bind(R.id.iv_logo)
         ImageView mIvLogo;
-        @Bind(R.id.tv_symbol)
-        TextView mTvSymbol;
-        @Bind(R.id.tv_money)
-        TextView mTvMoney;
-        @Bind(R.id.tv_unit)
-        TextView mTvUnit;
+        @Bind(R.id.tv_ordertime)
+        TextView mTvOrdertime;
         @Bind(R.id.rl_buy)
         RelativeLayout mRlBuy;
-        @Bind(R.id.tv_time)
-        TextView mTvTime;
+        @Bind(R.id.rl_bg)
+        RelativeLayout mRlBg;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
