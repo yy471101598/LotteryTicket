@@ -2,14 +2,17 @@ package com.lottery.bossex.ui.me;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lottery.bossex.R;
 import com.lottery.bossex.tools.ActivityStack;
 import com.lottery.bossex.tools.NoDoubleClickListener;
-import com.lottery.bossex.ui.BaseActivity;
 import com.lottery.bossex.ui.HostActivity;
 import com.lottery.bossex.ui.LoginActivity;
 import com.lottery.bossex.views.RoundImageView;
@@ -17,7 +20,7 @@ import com.lottery.bossex.views.RoundImageView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MeFragment extends BaseActivity {
+public class MeFragment extends Fragment {
     @Bind(R.id.img_icon)
     RoundImageView mImgIcon;
     @Bind(R.id.tv_name)
@@ -45,75 +48,77 @@ public class MeFragment extends BaseActivity {
     @Bind(R.id.rl_outlogin)
     RelativeLayout mRlOutlogin;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_me);
-        ButterKnife.bind(this);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_me, null);
+        ButterKnife.bind(this, view);
         initEvent();
+        return view;
     }
+
 
     private void initEvent() {
         mRlPersonal.setOnClickListener(new NoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View view) {
-                Intent intent = new Intent(ac, PersonalActivity.class);
+                Intent intent = new Intent(getActivity(), PersonalActivity.class);
                 startActivity(intent);
             }
         });
         mRlRecharge.setOnClickListener(new NoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View view) {
-                Intent intent = new Intent(ac, RechargeActivity.class);
+                Intent intent = new Intent(getActivity(), RechargeActivity.class);
                 startActivity(intent);
             }
         });
         mRlTixian.setOnClickListener(new NoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View view) {
-                Intent intent = new Intent(ac, TixianActivity.class);
+                Intent intent = new Intent(getActivity(), TixianActivity.class);
                 startActivity(intent);
             }
         });
         mRlRenzheng.setOnClickListener(new NoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View view) {
-                Intent intent = new Intent(ac, ShimingRenzhengActivity.class);
+                Intent intent = new Intent(getActivity(), ShimingRenzhengActivity.class);
                 startActivity(intent);
             }
         });
         mRlOrderdetail.setOnClickListener(new NoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View view) {
-                Intent intent = new Intent(ac, OrderDetailActivity.class);
+                Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
                 startActivity(intent);
             }
         });
         mRlFrend.setOnClickListener(new NoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View view) {
-                Intent intent = new Intent(ac, FrendActivity.class);
+                Intent intent = new Intent(getActivity(), FrendActivity.class);
                 startActivity(intent);
             }
         });
         mRlSetting.setOnClickListener(new NoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View view) {
-                Intent intent = new Intent(ac, SettingActivity.class);
+                Intent intent = new Intent(getActivity(), SettingActivity.class);
                 startActivity(intent);
             }
         });
         mRlHelp.setOnClickListener(new NoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View view) {
-                Intent intent = new Intent(ac, HelpActivity.class);
+                Intent intent = new Intent(getActivity(), HelpActivity.class);
                 startActivity(intent);
             }
         });
         mRlObout.setOnClickListener(new NoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View view) {
-                Intent intent = new Intent(ac, SettingActivity.class);
+                Intent intent = new Intent(getActivity(), SettingActivity.class);
                 startActivity(intent);
             }
         });
@@ -122,7 +127,7 @@ public class MeFragment extends BaseActivity {
             @Override
             protected void onNoDoubleClick(View view) {
                 ActivityStack.create().finishActivity(HostActivity.class);
-                Intent intent = new Intent(ac, LoginActivity.class);
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
             }
         });

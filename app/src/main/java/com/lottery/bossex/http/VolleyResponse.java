@@ -28,7 +28,13 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
+import com.lottery.bossex.tools.CommonUtils;
+import com.lottery.bossex.tools.Installation;
+import com.lottery.bossex.tools.LogUtils;
+import com.lottery.bossex.tools.PreferenceHelper;
+import com.lottery.bossex.tools.ToastUtils;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.FileInputStream;
@@ -61,331 +67,6 @@ public class VolleyResponse {
         return preManager;
     }
 
-    /**
-     * 用户获取JsonObject
-     *
-     * @param method
-     * @param url
-     * @param params
-     */
-    // public void getVollecyJsonObject(final int method, final String url,
-    // final Map<String, Object> params,
-    // final InterfaceVolleyResponse inter_response, final Context context) {
-    // JSONObject jsonObject1 = new JSONObject(params);
-    // Log.e("js", jsonObject1.toString());
-    // Log.e("url", url);
-    //
-    // JsonObjectRequest req = new JsonObjectRequest(method, url,
-    // new Listener<JSONObject>() {
-    // @Override
-    // public void onResponse(JSONObject response) {
-    // inter_response.onResponse(status, response.toString());
-    // }
-    // }, new ErrorListener() {
-    // @Override
-    // public void onErrorResponse(VolleyError error) {
-    // error.printStackTrace();
-    // if (error!=null &&!TextUtils.isEmpty(error.getMessage()) &&
-    // error.getMessage().equalsIgnoreCase("java.io.IOException: No authentication challenges found")){
-    // DialogUtil.getLogoffNotification(context,notificationTxt);
-    // return;
-    // }
-    // if (null != error && null != error.networkResponse) {
-    // int code = error.networkResponse.statusCode;
-    // byte[] data = error.networkResponse.data;
-    // Log.v("tag", "错误msg:" + new String(data) + " code:"
-    // + code, error);
-    //
-    // if(code==401){
-    // DialogUtil.getLogoffNotification(context,notificationTxt);
-    // }else{
-    // ErrorMsg msg = gson.fromJson(new String(data),
-    // ErrorMsg.class);
-    // inter_response.onErrorResponse(code, msg.respMsg);
-    // }
-    //
-    // } else {
-    // inter_response.onErrorResponse(501, "网络无响应");
-    // }
-    // }
-    // }) {
-    // @Override
-    // protected Response<JSONObject> parseNetworkResponse(
-    // NetworkResponse response) {
-    // try {
-    // status = response.statusCode;
-    //
-    // Log.v("status", "data--detail -> "
-    // + new String(response.data).toString());
-    // byte[] data = response.data;
-    // JSONObject jsonObject = new JSONObject();
-    //
-    // if (null != data && data.length > 0) {
-    // jsonObject = new JSONObject(new String(response.data,
-    // "UTF-8"));
-    // }
-    // return Response.success(jsonObject,
-    // HttpHeaderParser.parseCacheHeaders(response));
-    // } catch (UnsupportedEncodingException e) {
-    // return Response.error(new ParseError(e));
-    // } catch (Exception je) {
-    // return Response.error(new ParseError(je));
-    // }
-    // }
-    //
-    // @Override
-    // public Map<String, String> getHeaders() {
-    // HashMap<String, String> headers = new HashMap<String, String>();
-    //
-    // // headers.put("Content-Type","application/json");
-    // headers.put("Accept", "application/json");
-    // String tokenId=PreferenceHelper.readString( context, "freight",
-    // "userId","");
-    // String token=PreferenceHelper.readString( context, "freight",
-    // "token"+tokenId,"");
-    // if(!TextUtils.isEmpty(token)){
-    // headers.put("TOKEN", token);
-    // }
-    //
-    // return headers;
-    // }
-    // };
-    // req.setRetryPolicy(new DefaultRetryPolicy(20000,
-    // DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-    // DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-    // addRequest(context, req);
-    // }
-
-    /**
-     * 用于获取JsonArray
-     */
-    // public void getVollecyJsonArray(final int method, final String url,
-    // final Map<String, Object> params,
-    // final InterfaceVolleyResponse inter_response, final Context context) {
-    // JSONObject jsonObject1 = new JSONObject(params);
-    // Log.e("js", jsonObject1.toString());
-    // Log.e("url", url);
-    // JsonArrayRequest req = new JsonArrayRequest(method, url, jsonObject1,
-    // new Listener<JSONArray>() {
-    // @Override
-    // public void onResponse(JSONArray response) {
-    // inter_response.onResponse(status, response.toString());
-    // }
-    // }, new ErrorListener() {
-    // @Override
-    // public void onErrorResponse(VolleyError error) {
-    // error.printStackTrace();
-    //
-    // if (null != error &&!TextUtils.isEmpty(error.getMessage()) &&
-    // error.getMessage().equalsIgnoreCase("java.io.IOException: No authentication challenges found")){
-    //
-    // DialogUtil.getLogoffNotification(context,notificationTxt);
-    // return;
-    // }
-    // if (null != error && null != error.networkResponse) {
-    // int code = error.networkResponse.statusCode;
-    // byte[] data = error.networkResponse.data;
-    // Log.v("tag", "错误msg:" + new String(data) + " code:"
-    // + code, error);
-    // // Log.e("tag", "返回报错信息" + error.getMessage(),
-    // // error);
-    // if(code==401){
-    // DialogUtil.getLogoffNotification(context,notificationTxt);
-    // }else if(code==400){
-    // inter_response.onErrorResponse(code, "服务器报错");
-    // }else{
-    // ErrorMsg msg = gson.fromJson(new String(data),
-    // ErrorMsg.class);
-    // inter_response.onErrorResponse(code, msg.respMsg);
-    // }
-    //
-    // } else {
-    // inter_response.onErrorResponse(501, "网络无响应");
-    // }
-    // }
-    // }) {
-    // @Override
-    // protected Response<JSONArray> parseNetworkResponse(
-    // NetworkResponse response) {
-    // try {
-    // status = response.statusCode;
-    // Log.v("tag", "..data--detail -> "
-    // + new String(response.data).toString());
-    // byte[] data = response.data;
-    // JSONArray jsonArray = new JSONArray();
-    // if (null != data && data.length > 0) {
-    // jsonArray = new JSONArray(new String(response.data,
-    // "UTF-8"));
-    // }
-    // return Response.success(jsonArray,
-    // HttpHeaderParser.parseCacheHeaders(response));
-    // } catch (UnsupportedEncodingException e) {
-    // return Response.error(new ParseError(e));
-    // } catch (Exception je) {
-    // return Response.error(new ParseError(je));
-    // }
-    // }
-    //
-    // @Override
-    // public Map<String, String> getHeaders() throws AuthFailureError {
-    // HashMap<String, String> headers = new HashMap<String, String>();
-    // // headers.put("Content-Type","application/json");
-    // headers.put("Accept", "application/json");
-    // String tokenId=PreferenceHelper.readString( context, "freight",
-    // "userId","");
-    // String token=PreferenceHelper.readString( context, "freight",
-    // "token"+tokenId,"");
-    // if(!TextUtils.isEmpty(token)){
-    // headers.put("TOKEN", token);
-    // }
-    // return headers;
-    // }
-    // };
-    // req.setRetryPolicy(new DefaultRetryPolicy(20000,
-    // DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-    // DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-    // addRequest(context, req);
-    // }
-
-    // public void getVolleyResponseJson(Context context, String url,
-    // JSONArray array, final InterfaceVolleyResponse inter_response) {
-    // JSONObject jsonObject1 = null;
-    // try {
-    // jsonObject1 = new JSONObject(array.toString());
-    // } catch (JSONException e1) {
-    // // TODO Auto-generated catch block
-    // e1.printStackTrace();
-    // }
-    // Log.e("js", jsonObject1.toString());
-    // Log.e("url", url);
-    // // jsonObject1.toString();
-    // JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
-    // Method.POST, url, jsonObject1,
-    // new Response.Listener<JSONObject>() {
-    // @Override
-    // public void onResponse(JSONObject response) {
-    // // Log.v("tag", "返回的信息detail -> " +
-    // // response.toString());
-    // inter_response.onResponse(status, response.toString());
-    // }
-    // }, new Response.ErrorListener() {
-    // @Override
-    // public void onErrorResponse(VolleyError error) {
-    // error.printStackTrace();
-    // Log.d("tag", "error");
-    // if (null != error && null != error.networkResponse) {
-    // int code = error.networkResponse.statusCode;
-    // byte[] data = error.networkResponse.data;
-    // Log.v("tag", "错误msg:" + new String(data) + " code:"
-    // + code, error);
-    //
-    // // Log.e("tag", "返回报错信息" + error.getMessage(),
-    // // error);
-    //
-    // inter_response.onErrorResponse(code, new String(data));
-    // } else {
-    // inter_response.onErrorResponse(501, "网络无响应");
-    // }
-    // }
-    // }) {
-    // @Override
-    // protected Response<JSONObject> parseNetworkResponse(
-    // NetworkResponse response) {
-    // try {
-    // status = response.statusCode;
-    // Log.v("status", "statusCode--detail -> " + status);
-    // Log.v("status", "data--detail -> "
-    // + new String(response.data).toString());
-    // byte[] data = response.data;
-    // JSONObject jsonObject = new JSONObject();
-    // // if(status==ConstantUtils.CODE_REGISTER){
-    // // inter_response.onResponse(status,response);
-    // // }
-    // if (null != data && data.length > 0) {
-    // jsonObject = new JSONObject(new String(response.data,
-    // "UTF-8"));
-    // }
-    // return Response.success(jsonObject,
-    // HttpHeaderParser.parseCacheHeaders(response));
-    // } catch (UnsupportedEncodingException e) {
-    // return Response.error(new ParseError(e));
-    // } catch (Exception je) {
-    // return Response.error(new ParseError(je));
-    // }
-    // }
-    //
-    // @Override
-    // public Map<String, String> getHeaders() {
-    // HashMap<String, String> headers = new HashMap<String, String>();
-    //
-    // // headers.put("Content-Type","application/json");
-    // headers.put("Accept", "application/json");
-    //
-    // return headers;
-    // }
-    // };
-    // jsonRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
-    // DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-    // DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-    // addRequest(context, jsonRequest);
-    // }
-
-    // public void getVollecyResponse(int method, final String url,
-    // final InterfaceVolleyResponse inter) {
-    // JsonArrayRequest req = new JsonArrayRequest(method, url,
-    // new Listener<JSONArray>() {
-    // @Override
-    // public void onResponse(JSONArray arg0) {
-    // inter.onResponse(status, arg0.toString());
-    // }
-    // }, new ErrorListener() {
-    // @Override
-    // public void onErrorResponse(VolleyError error) {
-    // if (null != error && null != error.networkResponse) {
-    // int code = error.networkResponse.statusCode;
-    // byte[] data = error.networkResponse.data;
-    // Log.v("tag", "错误msg:" + new String(data) + " code:"
-    // + code, error);
-    // // Log.e("tag", "返回报错信息" + error.getMessage(),
-    // // error);
-    // // if(code==401){
-    // // DialogUtil.getLogoffNotification(context,notificationTxt);
-    // // }else{
-    // ErrorMsg msg = gson.fromJson(new String(data),
-    // ErrorMsg.class);
-    // inter.onErrorResponse(code, msg.respMsg);
-    // // }
-    //
-    // } else {
-    // inter.onErrorResponse(501, "网络无响应");
-    // }
-    // }
-    // }) {
-    // @Override
-    // protected Response<JSONArray> parseNetworkResponse(
-    // NetworkResponse response) {
-    // try {
-    // status = response.statusCode;
-    //
-    // Log.v("status", "data--detail -> "
-    // + new String(response.data).toString());
-    // byte[] data = response.data;
-    // JSONArray jsonObject = new JSONArray();
-    //
-    // if (null != data && data.length > 0) {
-    // jsonObject = new JSONArray(new String(response.data,
-    // "UTF-8"));
-    // }
-    // return Response.success(jsonObject,
-    // HttpHeaderParser.parseCacheHeaders(response));
-    // } catch (UnsupportedEncodingException e) {
-    // return Response.error(new ParseError(e));
-    // } catch (Exception je) {
-    // return Response.error(new ParseError(je));
-    // }
-    // }
-    // };
-    // }
     public void getVolleyString(final Context context, String Url, final InterfaceVolleyResponse inter_response) {
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 Url, new Response.Listener<String>() {
@@ -419,14 +100,13 @@ public class VolleyResponse {
      * @param context
      * @param url
      * @param map
-     * @param inter_response
      */
     public void getVolleyResponse(final Context context, final String url,
                                   Map<String, Object> map,
-                                  final InterfaceVolleyResponse inter_response) {
+                                  final InterfaceBack back) {
         JSONObject jsonObject1 = new JSONObject(map);
-        Log.e("js", jsonObject1.toString());
-        Log.e("url", url);
+        LogUtils.d("xxjs", jsonObject1.toString());
+        LogUtils.d("xxurl", url);
 
         // jsonObject1.toString();
         // JSONArray s = new JSONArray();
@@ -437,7 +117,24 @@ public class VolleyResponse {
                     public void onResponse(JSONObject response) {
                         // Log.v("tag", "返回的信息detail -> " +
                         // response.toString());
-                        inter_response.onResponse(status, response.toString());
+                        LogUtils.d("xxres", response.toString());
+                        try {
+                            if (response.getInt("status") == 0) {
+                                back.onResponse(response.getString("data"));
+                            } else {
+    //                        if (jso.getInt("status") == 106) {
+    //                            PreferenceHelper.write(ac, "carapp", "token", "");
+    //                            ActivityStack.create().finishAllActivity();
+    //                            Intent intent = new Intent(ac, LoginActivity.class);
+    //                            ac.startActivity(intent);
+    //                        }
+                                back.onErrorResponse("");
+                                ToastUtils.showToast(context, response.getString("msg"));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            back.onErrorResponse("");
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -446,10 +143,12 @@ public class VolleyResponse {
                 if (null != error && null != error.networkResponse) {
                     int code = error.networkResponse.statusCode;
                     byte[] data = error.networkResponse.data;
-                    Log.d("tag", "error==" + new String(data));
-                    inter_response.onErrorResponse(code, "返回为空");
+                    LogUtils.d("xxtag", "error==" + new String(data));
+                    back.onErrorResponse("");
+                    ToastUtils.showToast(context, "返回为空");
                 } else {
-                    inter_response.onErrorResponse(501, "网络无响应");
+                    back.onErrorResponse("");
+                    ToastUtils.showToast(context, "返回为空");
                 }
             }
         }) {
@@ -482,19 +181,13 @@ public class VolleyResponse {
                 HashMap<String, String> headers = new HashMap<String, String>();
 
                 // headers.put("Content-Type","application/json");
-                headers.put("Accept", "application/json");
-                // if(url.equals(ConstantUtils.LoginUrl)){
-                // Log.d("logintoken", "xxx");
-                // }else{
-                // String tokenId=PreferenceHelper.readString( context,
-                // "freight", "userId","");
-                // String token=PreferenceHelper.readString( context, "freight",
-                // "token"+tokenId,"");
-                // if(!TextUtils.isEmpty(token)){
-                // headers.put("TOKEN", token);
-                // }
-                // Log.d("token", token);
-                // }
+                headers.put("api_version", "0.0.1");
+                headers.put("content_type", "application/json");
+                headers.put("platform", "android");
+                headers.put("language", PreferenceHelper.readString(context, "lottery", "lagavage", "cn"));
+                headers.put("uuid", Installation.id(context));
+                headers.put("system_version", CommonUtils.getVersionName(context));
+                headers.put("token", PreferenceHelper.readString(context, "lottery", "token", ""));
                 return headers;
             }
         };
@@ -602,18 +295,18 @@ public class VolleyResponse {
 //        // 限制宽高都是300
 //        il.get(url, ilis, getViewWith(img)[0], getViewWith(img)[1]);
 //        //il.get(url, ilis);
-         if(url.length()>1000){
+        if (url.length() > 1000) {
 
-         }else {
-             Uri uri = Uri.parse(url);
-             img.setImageURI(uri);
-         }
+        } else {
+            Uri uri = Uri.parse(url);
+            img.setImageURI(uri);
+        }
     }
 
     public void getInternetImg(final Context context, String url, final ImageView img, final int drawId) {
-        if(url.length()>1000){
+        if (url.length() > 1000) {
 
-        }else {
+        } else {
             if (null == rq) {
 
                 rq = Volley.newRequestQueue(context);
@@ -626,6 +319,7 @@ public class VolleyResponse {
             //il.get(url, ilis);
         }
     }
+
     public void getInternetImgBitmap(Context context, String url,
                                      final InterfaceVolleyResponse interface_response) {
 
@@ -640,7 +334,7 @@ public class VolleyResponse {
             @Override
             public void onErrorResponse(VolleyError error) {
                 // imageView.setImageResource(R.drawable.default_image);
-                interface_response.onErrorResponse(2,null);
+                interface_response.onErrorResponse(2, null);
             }
         });
         // imageRequest.setRetryPolicy(new DefaultRetryPolicy(6000,
@@ -744,6 +438,7 @@ public class VolleyResponse {
         }
 
     }
+
     public int[] getViewWith(View view) {
         int
 
@@ -761,6 +456,7 @@ public class VolleyResponse {
         wh[1] = view.getMeasuredWidth();
         return wh;
     }
+
     public class BitmapCache implements ImageCache {
 
         private LruCache<String, Bitmap> mCache;

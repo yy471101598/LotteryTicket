@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -14,10 +15,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gyf.barlibrary.ImmersionBar;
 import com.lottery.bossex.R;
 import com.lottery.bossex.tools.ActivityStack;
 import com.lottery.bossex.tools.ObtainSystemLanguage;
 import com.lottery.bossex.tools.PreferenceHelper;
+import com.lottery.bossex.ui.home.HomeFragment;
+import com.lottery.bossex.ui.lottery.LotteryFragment;
+import com.lottery.bossex.ui.me.MeFragment;
 
 import java.util.Locale;
 
@@ -31,14 +36,16 @@ public class HostFragmentActivity extends BaseActivity implements OnClickListene
     private TextView tv_home, tv_me, tv_center;
     private Activity ac;
     private long firstTime = 0;
-
+    private HomeFragment homeFourFragment;
+    private LotteryFragment categoryFourFragment;
+    private MeFragment mineFourFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         ac = this;
         initLocaleLanguage();
-        setContentView(R.layout.activity_host);
+        setContentView(R.layout.activity_fhost);
 //        StatusBarCompat.setStatusBarColor(ac, getResources().getColor(R.color.theme_color), 112);
         initView();
         ActivityStack.create().addActivity(HostFragmentActivity.this);
@@ -69,9 +76,9 @@ public class HostFragmentActivity extends BaseActivity implements OnClickListene
         String language = ObtainSystemLanguage.obainLanguage(getApplicationContext());
         //设置本地语言
         switch (language) {
-            case "zh":
+            case "cn":
                 configuration.locale = Locale.CHINA;
-                PreferenceHelper.write(ac, "lottery", "lagavage", "zh");
+                PreferenceHelper.write(ac, "lottery", "lagavage", "cn");
                 break;
             case "en":
                 configuration.locale = Locale.ENGLISH;
@@ -207,19 +214,25 @@ public class HostFragmentActivity extends BaseActivity implements OnClickListene
     private void selectTab(int i) {
         switch (i) {
             case 1:
+                selectedFragment(0);
                 resetTab();
                 img_home.setBackgroundResource(R.mipmap.home_true);
                 tv_home.setTextColor(getResources().getColor(R.color.theme_color));
+                ImmersionBar.with(this).reset().navigationBarColor(R.color.colorPrimary).init();
                 break;
             case 2:
+                selectedFragment(1);
                 resetTab();
                 img_center.setBackgroundResource(R.mipmap.me_true);
                 tv_center.setTextColor(getResources().getColor(R.color.theme_color));
+                ImmersionBar.with(this).reset().navigationBarColor(R.color.colorPrimary).init();
                 break;
             case 3:
+                selectedFragment(2);
                 resetTab();
                 img_me.setBackgroundResource(R.mipmap.me_true);
                 tv_me.setTextColor(getResources().getColor(R.color.theme_color));
+                ImmersionBar.with(this).reset().navigationBarColor(R.color.colorPrimary).init();
                 break;
         }
     }
@@ -240,7 +253,51 @@ public class HostFragmentActivity extends BaseActivity implements OnClickListene
         }
     }
 
+    private void selectedFragment(int position) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        hideFragment(transaction);
+        switch (position) {
+            case 0:
+                if (homeFourFragment == null) {
+                    homeFourFragment = new HomeFragment();
+                    transaction.add(R.id.content, homeFourFragment);
+                } else {
+                    transaction.show(homeFourFragment);
+                }
+                break;
+            case 1:
+                if (categoryFourFragment == null) {
+                    categoryFourFragment = new LotteryFragment();
+                    transaction.add(R.id.content, categoryFourFragment);
+                } else {
+                    transaction.show(categoryFourFragment);
+                }
+                break;
+            case 2:
+                if (mineFourFragment == null) {
+                    mineFourFragment = new MeFragment();
+                    transaction.add(R.id.content, mineFourFragment);
+                } else {
+                    transaction.show(mineFourFragment);
+                }
+                break;
+            default:
+                break;
+        }
+        transaction.commit();
+    }
 
+    private void hideFragment(FragmentTransaction transaction) {
+        if (homeFourFragment != null) {
+            transaction.hide(homeFourFragment);
+        }
+        if (categoryFourFragment != null) {
+            transaction.hide(categoryFourFragment);
+        }
+        if (mineFourFragment != null) {
+            transaction.hide(mineFourFragment);
+        }
+    }
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN && event.getKeyCode() == KeyEvent.KEYCODE_BACK) {

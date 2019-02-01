@@ -106,7 +106,7 @@ public class ShimingRenzhengActivity extends BaseActivity {
         dialog.show();
 //        1注册 2登陆 3重置密码 4绑定手机号
         ImpSendSms sendSms = new ImpSendSms();
-        sendSms.sendSms(ShimingRenzhengActivity.this, mEtAccount.getText().toString(), 1, new InterfaceBack() {
+        sendSms.sendSms(ShimingRenzhengActivity.this, mEtAccount.getText().toString(), new InterfaceBack() {
             @Override
             public void onResponse(Object response) {
                 MyTimer myTimer = new MyTimer(ShimingRenzhengActivity.this, 90000,

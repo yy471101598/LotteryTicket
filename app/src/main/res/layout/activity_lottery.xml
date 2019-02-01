@@ -33,7 +33,6 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="@dimen/dp_31"
                     android:orientation="vertical"
-                    android:tag="sticky"
                     >
 
                     <TextView
@@ -89,6 +88,69 @@
 
                     </LinearLayout>
                 </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_132"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:tag="sticky"
+                    android:visibility="gone"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_stickname_sticky"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/dp_48"
+                        android:layout_marginBottom="@dimen/dp_14"
+                        android:text="竞彩大奖"
+                        android:textColor="@color/textcolor"
+                        android:textSize="@dimen/sp_16"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_34"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="@dimen/dp_14"
+                        android:layout_marginRight="@dimen/dp_14"
+                        android:layout_marginBottom="@dimen/dp_14"
+                        android:background="@drawable/shap_stickysearch"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/li_search_sticky"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            >
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@mipmap/search"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dp_7"
+                                android:text="咻，一下出来啦"
+                                android:textColor="@color/textcc"
+                                android:textSize="@dimen/sp_13"
+                                />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </RelativeLayout>
             </RelativeLayout>
 
             <com.lottery.bossex.views.MyListView
@@ -100,6 +162,7 @@
                 android:divider="@color/white"
                 android:dividerHeight="0dp"
                 android:scrollbars="none"
+                android:listSelector="@android:color/transparent"
                 ></com.lottery.bossex.views.MyListView>
         </LinearLayout>
     </com.lottery.bossex.views.StickyScrollView>

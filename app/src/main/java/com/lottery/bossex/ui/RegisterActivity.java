@@ -9,13 +9,19 @@ import android.widget.TextView;
 
 import com.lottery.bossex.R;
 import com.lottery.bossex.http.InterfaceBack;
+import com.lottery.bossex.http.UrlTools;
+import com.lottery.bossex.http.VolleyResponse;
 import com.lottery.bossex.model.ImpSendSms;
 import com.lottery.bossex.tools.MyTimer;
 import com.lottery.bossex.tools.NoDoubleClickListener;
 import com.lottery.bossex.tools.PreferenceHelper;
 import com.lottery.bossex.tools.ShadowUtils;
+import com.lottery.bossex.tools.SignUtils;
 import com.lottery.bossex.tools.ToastUtils;
 import com.lottery.bossex.views.ClearEditText;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -102,7 +108,24 @@ public class RegisterActivity extends BaseActivity {
                 } else if (!PreferenceHelper.readBoolean(ac, "lottery", "readxy", true)) {
                     ToastUtils.showToast(ac, res.getString(R.string.pleaseread));
                 } else {
+                    dialog.show();
+                    Map<String, Object> params = new HashMap<>();
+                    params.put("code", mEtLoginCode.getText().toString());
+                    params.put("userName", mEtLoginAccount.getText().toString());
+                    params.put("password", mEtLoginPassword.getText().toString());
+                    params.put("inviteCode", "");
+                    VolleyResponse.instance().getVolleyResponse(ac, UrlTools.obtainUrl("user/Register"), SignUtils.obtainAllMap(ac,params), new InterfaceBack() {
+                        @Override
+                        public void onResponse(Object response) {
+                          dialog.dismiss();
+                          finish();
+                        }
 
+                        @Override
+                        public void onErrorResponse(Object msg) {
+                            dialog.dismiss();
+                        }
+                    });
                 }
             }
         });
@@ -112,7 +135,7 @@ public class RegisterActivity extends BaseActivity {
         dialog.show();
 //        1注册 2登陆 3重置密码 4绑定手机号
         ImpSendSms sendSms = new ImpSendSms();
-        sendSms.sendSms(RegisterActivity.this, mEtLoginAccount.getText().toString(), 1, new InterfaceBack() {
+        sendSms.sendSms(RegisterActivity.this, mEtLoginAccount.getText().toString(), new InterfaceBack() {
             @Override
             public void onResponse(Object response) {
                 MyTimer myTimer = new MyTimer(RegisterActivity.this, 90000,

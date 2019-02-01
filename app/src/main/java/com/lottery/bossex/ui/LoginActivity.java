@@ -7,11 +7,21 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.lottery.bossex.R;
+import com.lottery.bossex.http.InterfaceBack;
+import com.lottery.bossex.http.UrlTools;
+import com.lottery.bossex.http.VolleyResponse;
 import com.lottery.bossex.tools.ActivityStack;
 import com.lottery.bossex.tools.NoDoubleClickListener;
 import com.lottery.bossex.tools.ShadowUtils;
+import com.lottery.bossex.tools.SignUtils;
 import com.lottery.bossex.tools.ToastUtils;
 import com.lottery.bossex.views.ClearEditText;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -53,6 +63,7 @@ public class LoginActivity extends BaseActivity {
                 Intent intent = new Intent(ac, RegisterActivity.class);
                 startActivity(intent);
 
+
             }
         });
 
@@ -64,8 +75,29 @@ public class LoginActivity extends BaseActivity {
                 } else if (mEtLoginPassword.getText().toString().equals("")) {
                     ToastUtils.showToast(ac, res.getString(R.string.input_password));
                 } else {
-                    Intent intent = new Intent(ac, HostActivity.class);
-                    startActivity(intent);
+                    dialog.show();
+//                    "userName":"343848758@qq.com",
+//                            "password":"832hisss"
+                    Map<String, Object> params = new HashMap<>();
+                    params.put("userName", mEtLoginAccount.getText().toString());
+                    params.put("password", mEtLoginPassword.getText().toString());
+                    VolleyResponse.instance().getVolleyResponse(ac, UrlTools.obtainUrl("user/load"), SignUtils.obtainAllMap(ac, params), new InterfaceBack() {
+                        @Override
+                        public void onResponse(Object response) {
+                            try {
+                                JSONObject jso=new JSONObject(response.toString());
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+
+                        @Override
+                        public void onErrorResponse(Object msg) {
+
+                        }
+                    });
                 }
             }
         });

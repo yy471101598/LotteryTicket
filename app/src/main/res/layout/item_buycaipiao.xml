@@ -12,8 +12,9 @@
 
         <ImageView
             android:id="@+id/img_icon"
-            android:layout_width="@dimen/dp_59"
-            android:layout_height="@dimen/dp_77"
+            android:layout_width="@dimen/dp_79"
+            android:layout_height="@dimen/dp_100"
+            android:layout_centerInParent="true"
 
             />
     </RelativeLayout>

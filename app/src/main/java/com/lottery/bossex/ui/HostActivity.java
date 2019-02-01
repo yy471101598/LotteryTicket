@@ -76,9 +76,9 @@ public class HostActivity extends TabActivity implements OnClickListener {
         String language = ObtainSystemLanguage.obainLanguage(getApplicationContext());
         //设置本地语言
         switch (language) {
-            case "zh":
+            case "cn":
                 configuration.locale = Locale.CHINA;
-                PreferenceHelper.write(ac, "lottery", "lagavage", "zh");
+                PreferenceHelper.write(ac, "lottery", "lagavage", "cn");
                 break;
             case "en":
                 configuration.locale = Locale.ENGLISH;

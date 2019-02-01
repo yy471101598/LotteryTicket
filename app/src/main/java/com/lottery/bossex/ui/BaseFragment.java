@@ -20,7 +20,6 @@ public abstract class BaseFragment extends Fragment {
 
     protected Activity mActivity;
     protected View mRootView;
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

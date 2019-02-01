@@ -3,12 +3,40 @@ package com.lottery.bossex.tools;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by songxiaotao on 2018/2/7.
  */
 
 public class DateUtils {
+    /**
+     45.     * 获取当前时间
+     46.     *
+     47.     * @return
+     48.     */
+    public static String getCurrentTime_Today() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(new Date());
+    }
+    /**
+     * 掉此方法输入所要转换的时间输入例如（"2014年06月14日16时09分00秒"）返回时间戳
+     * */
+    public static String timeTodata(String time) {
+        SimpleDateFormat sdr = new SimpleDateFormat("yyyy-MM-dd",
+                Locale.CHINA);
+        Date date;
+        String times = null;
+        try {
+            date = sdr.parse(time);
+            long l = date.getTime();
+            String stf = String.valueOf(l);
+            times = stf.substring(0, 10);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return times;
+    }
     public static String handlerTime() {
         SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss ");
         Date curDate = new Date(System.currentTimeMillis());//获取当前时间
@@ -59,7 +87,7 @@ public class DateUtils {
         if (timeStamp == 0) {
             return "";
         }
-        timeStamp = timeStamp * 1000;
+//        timeStamp = timeStamp * 1000;
         String result = "";
         SimpleDateFormat format = new SimpleDateFormat(dataFormat);
         result = format.format(new Date(timeStamp));
@@ -78,5 +106,10 @@ public class DateUtils {
         }
         return date.getTime();
     }
-
+    public static String getCurrentTime(String format) {
+        SimpleDateFormat formatter = new SimpleDateFormat(format);
+        Date curDate = new Date(System.currentTimeMillis());//获取当前时间
+        String entry_time = formatter.format(curDate);
+        return entry_time;
+    }
 }

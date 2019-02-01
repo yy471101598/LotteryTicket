@@ -8,14 +8,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
 import com.lottery.bossex.R;
 import com.lottery.bossex.bean.event.EventMsg;
 import com.lottery.bossex.tools.CleanMSG;
 import com.lottery.bossex.tools.EventBusUtils;
 import com.lottery.bossex.tools.PreferenceHelper;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import static com.lottery.bossex.tools.LogUtils.tag;
 
@@ -57,6 +57,7 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         init();
+//        PermissionUtil.checkPermission(this);
     }
 
 

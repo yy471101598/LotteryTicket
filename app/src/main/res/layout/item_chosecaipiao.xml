@@ -4,47 +4,62 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/rl_top"
+    <ScrollView
         android:layout_width="@dimen/dp_322"
-        android:layout_height="@dimen/dp_348"
-        android:background="@mipmap/ballchose_top"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
         >
 
-        <com.lottery.bossex.views.MyGridView
-            android:id="@+id/gridview_top"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/dp_24"
-            android:layout_marginTop="@dimen/dp_19"
-            android:layout_marginRight="@dimen/dp_24"
-            android:layout_marginBottom="@dimen/dp_19"
-            android:cacheColorHint="#00000000"
-            android:numColumns="7"
-            android:scrollbars="none"
-            ></com.lottery.bossex.views.MyGridView>
+            android:orientation="vertical"
+            >
 
-    </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rl_top"
+                android:layout_width="@dimen/dp_322"
+                android:layout_height="@dimen/dp_348"
+                android:background="@mipmap/ballchose_top"
+                >
 
-    <RelativeLayout
-        android:id="@+id/rl_down"
-        android:layout_width="@dimen/dp_322"
-        android:layout_height="@dimen/dp_187"
-        android:background="@mipmap/ballchose_top"
-        >
+                <com.lottery.bossex.views.MyGridView
+                    android:id="@+id/gridview_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_24"
+                    android:layout_marginTop="@dimen/dp_19"
+                    android:layout_marginRight="@dimen/dp_24"
+                    android:layout_marginBottom="@dimen/dp_19"
+                    android:cacheColorHint="#00000000"
+                    android:numColumns="7"
+                    android:scrollbars="none"
+                    ></com.lottery.bossex.views.MyGridView>
 
-        <com.lottery.bossex.views.MyGridView
-            android:id="@+id/gridview_down"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/dp_24"
-            android:layout_marginTop="@dimen/dp_19"
-            android:layout_marginRight="@dimen/dp_24"
-            android:layout_marginBottom="@dimen/dp_19"
-            android:cacheColorHint="#00000000"
-            android:numColumns="7"
-            android:scrollbars="none"
-            ></com.lottery.bossex.views.MyGridView>
+            </RelativeLayout>
 
-    </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rl_down"
+                android:layout_width="@dimen/dp_322"
+                android:layout_height="@dimen/dp_187"
+                android:background="@mipmap/ballchose_down"
+                >
+
+                <com.lottery.bossex.views.MyGridView
+                    android:id="@+id/gridview_down"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_24"
+                    android:layout_marginTop="@dimen/dp_19"
+                    android:layout_marginRight="@dimen/dp_24"
+                    android:layout_marginBottom="@dimen/dp_19"
+                    android:cacheColorHint="#00000000"
+                    android:numColumns="7"
+                    android:scrollbars="none"
+                    ></com.lottery.bossex.views.MyGridView>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

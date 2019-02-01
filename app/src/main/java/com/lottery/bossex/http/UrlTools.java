@@ -7,7 +7,7 @@ package com.lottery.bossex.http;
 public class UrlTools
 {
     public static String obtainUrl(String url){
-        return  "http://ccc.shaokaobbs.com:8017/app/" + url;
+        return  "http://47.102.44.14:42259/" + url;
 
     }
 }

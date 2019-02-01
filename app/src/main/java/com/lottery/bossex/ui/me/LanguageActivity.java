@@ -61,7 +61,7 @@ public class LanguageActivity extends BaseActivity {
                 mImgEnchose.setVisibility(View.VISIBLE);
                 mTvZh.setTextColor(res.getColor(R.color.text66));
                 mImgZhchose.setVisibility(View.GONE);
-                PreferenceHelper.write(ac, "lottery", "lagavage", "zh");
+                PreferenceHelper.write(ac, "lottery", "lagavage", "cn");
             }
         });
         mLiZh.setOnClickListener(new NoDoubleClickListener() {
