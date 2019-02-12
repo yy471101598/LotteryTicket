@@ -1,25 +1,29 @@
 package com.lottery.bossex.ui.home;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.google.gson.Gson;
 import com.lottery.bossex.R;
 import com.lottery.bossex.bean.Home;
-import com.lottery.bossex.bean.HomeBannerMsg;
+import com.lottery.bossex.http.InterfaceBack;
+import com.lottery.bossex.http.UrlTools;
+import com.lottery.bossex.http.VolleyResponse;
+import com.lottery.bossex.tools.GlideImageLoader;
+import com.lottery.bossex.tools.SignUtils;
 import com.lottery.bossex.ui.BaseActivity;
 import com.lottery.bossex.views.MyListView;
-import com.lottery.bossex.views.PagingScrollHelper;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.Transformer;
+import com.youth.banner.listener.OnBannerListener;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -28,40 +32,16 @@ import butterknife.ButterKnife;
  * Created by songxiaotao on 2018/6/5.
  */
 
-public class HomeActivity extends BaseActivity implements PagingScrollHelper.onPageChangeListener {
+public class HomeActivity extends BaseActivity implements OnBannerListener {
     @Bind(R.id.li_search)
     LinearLayout mLiSearch;
-    @Bind(R.id.recyclerview)
-    RecyclerView mRecyclerview;
-    @Bind(R.id.ll)
-    LinearLayout mLl;
     @Bind(R.id.mylistview)
     MyListView mMylistview;
-    private Gson gson;
-    private AtomicInteger what = new AtomicInteger(0);
-    /**
-     * 是否自动轮播，手指滑动时，设置为false
-     */
-    private boolean isContinue = true;
-    private int Time = 3000;// 广告轮播时间
-    private final Handler viewHandler = new Handler() {
-
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-        }
-
-    };
-    // 底部小点图片
-    private ImageView[] dots;
-    // 记录当前选中位置
-    private int currentIndex;
-    private HomeBannerAdapter recyAdapter;
-    //    PagingScrollHelper scrollHelper = new PagingScrollHelper();
-    private List<HomeBannerMsg> datas = new ArrayList<>();
-    private LinearLayoutManager layoutManager;
+    @Bind(R.id.banner)
+    Banner banner;
     private List<Home> homelist = new ArrayList<>();
     private HomeAdapter mHomeAdapter;
+    private List<String> images = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,27 +49,34 @@ public class HomeActivity extends BaseActivity implements PagingScrollHelper.onP
         setContentView(R.layout.activity_home);
         ac = this;
         ButterKnife.bind(this);
-        gson = new Gson();
-        recyAdapter = new HomeBannerAdapter(ac, datas);
-        layoutManager = new LinearLayoutManager(ac);
-        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        mRecyclerview.setLayoutManager(layoutManager);
-        mRecyclerview.setAdapter(recyAdapter);
         mHomeAdapter = new HomeAdapter(ac, homelist);
         mMylistview.setAdapter(mHomeAdapter);
-//        scrollHelper.setUpRecycleView(mRecyclerview);
-//        scrollHelper.setOnPageChangeListener(this);
-//        mRecyclerview.setHorizontalScrollBarEnabled(true);
-        recyAdapter.setOnItemClickListener(new HomeBannerAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int tag) {
-            }
-        });
         obtainBanner();
         obtainHomeMsg();
     }
 
     private void obtainHomeMsg() {
+        dialog.show();
+        Map<String, Object> params = new HashMap<>();
+        VolleyResponse.instance().getVolleyResponse(ac, UrlTools.obtainUrl("api/home"), SignUtils.obtainAllMap(ac, params), new InterfaceBack() {
+            @Override
+            public void onResponse(Object response) {
+                try {
+                    dialog.dismiss();
+                    JSONObject jso = new JSONObject(response.toString());
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onErrorResponse(Object msg) {
+                dialog.dismiss();
+            }
+        });
+
         Home home = new Home();
         homelist.add(home);
         homelist.add(home);
@@ -102,93 +89,67 @@ public class HomeActivity extends BaseActivity implements PagingScrollHelper.onP
     }
 
 
-    /**
-     * 设置当前指示点
-     *
-     * @param position
-     */
-    private void setCurDot(int position) {
-        if (position < 0 || position > datas.size() || currentIndex == position) {
-            return;
-        }
-        dots[position].setEnabled(true);
-        dots[currentIndex].setEnabled(false);
-        currentIndex = position;
-    }
-
-    private void initDots() {
-        LinearLayout ll = (LinearLayout) findViewById(R.id.ll);
-        dots = new ImageView[datas.size()];
-
-        // 循环取得小点图片
-        for (int i = 0; i < datas.size(); i++) {
-            // 得到一个LinearLayout下面的每一个子元素
-            dots[i] = new ImageView(ac);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            params.setMargins(20, 0, 0, 0);
-            dots[i].setLayoutParams(params);  //设置图片宽高
-            dots[i].setEnabled(false);// 都设为灰色
-            dots[i].setImageResource(R.drawable.dot_selector);
-            dots[i].setTag(i);// 设置位置tag，方便取出与当前位置对应
-            ll.addView(dots[i]);
-        }
-
-        currentIndex = 0;
-        dots[currentIndex].setEnabled(true); // 设置为白色，即选中状态
-
-    }
-
     private void obtainBanner() {
-        HomeBannerMsg h = new HomeBannerMsg();
-        h.image = "";
-        datas.add(h);
-        datas.add(h);
-        datas.add(h);
-        initDots();
-//        new Thread(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                while (true) {
-//                    if (isContinue) {
-//                        viewHandler.sendEmptyMessage(what.get());
-//                        whatOption();
-//                    }
-//                }
-//            }
-//
-//        }).start();
+        images.add("https://gss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=e9873bfca944ad342eea8f81e09220cc/a8ec8a13632762d08fa73daea8ec08fa513dc602.jpg");
+        //设置banner样式
+        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
+        //设置图片加载器
+        banner.setImageLoader(new GlideImageLoader());
+        //设置图片集合
+        banner.setImages(images);
+        //设置banner动画效果
+        banner.setBannerAnimation(Transformer.DepthPage);
+//        //设置标题集合（当banner样式有显示title时）
+//        banner.setBannerTitles(titles);
+        //设置自动轮播，默认为true
+        banner.isAutoPlay(true);
+        //设置轮播时间
+        banner.setDelayTime(1500);
+        //设置指示器位置（当banner模式中有指示器时）
+        banner.setIndicatorGravity(BannerConfig.CENTER);
+        banner.setOnBannerListener(this);
+        //banner设置方法全部调用完毕时最后调用
+        banner.start();
+
+        dialog.show();
+        Map<String, Object> params = new HashMap<>();
+        VolleyResponse.instance().getVolleyResponse(ac, UrlTools.obtainUrl("api/banners"), SignUtils.obtainAllMap(ac, params), new InterfaceBack() {
+            @Override
+            public void onResponse(Object response) {
+                try {
+                    dialog.dismiss();
+                    JSONObject jso = new JSONObject(response.toString());
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onErrorResponse(Object msg) {
+                dialog.dismiss();
+            }
+        });
+    }
+
+    //如果你需要考虑更好的体验，可以这么操作
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //开始轮播
+        banner.startAutoPlay();
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onStop() {
+        super.onStop();
+        //结束轮播
+        banner.stopAutoPlay();
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-//        mTvGonggao.stopAutoScroll();
-    }
-
-
-    private void whatOption() {
-
-        what.incrementAndGet();//自增，然后赋值给当前值
-
-        //如果循环超出设置的个数，则设置为开始
-        if (what.get() > datas.size() - 1) {
-            what.getAndAdd(-datas.size());
-        }
-        try {
-            Thread.sleep(Time);//3秒滚动一次
-        } catch (InterruptedException e) {
-
-        }
-    }
-
-    @Override
-    public void onPageChange(int index) {
+    public void OnBannerClick(int position) {
 
     }
 }

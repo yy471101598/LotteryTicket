@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">高薪教育</string>
+    <string name="app_name">测试</string>
     <string name="scan_text">请扫描消费者的二维码</string>
     <string name="code_title">扫码支付</string>
     <string name="input_account">请输入帐号</string>

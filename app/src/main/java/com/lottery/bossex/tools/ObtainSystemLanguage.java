@@ -12,7 +12,6 @@ public class ObtainSystemLanguage {
     public static String obainLanguage(Context context) {
         Locale locale = context.getResources().getConfiguration().locale;
         String language = locale.getLanguage();
-        LogUtils.d("xxlanguage", language);
         PreferenceHelper.write(context, "numc", "lagavage", language);
         return language;
     }

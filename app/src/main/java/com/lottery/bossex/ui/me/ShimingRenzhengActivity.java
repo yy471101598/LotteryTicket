@@ -7,14 +7,29 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.lottery.bossex.R;
+import com.lottery.bossex.bean.HomeBannerMsg;
 import com.lottery.bossex.http.InterfaceBack;
+import com.lottery.bossex.http.UrlTools;
+import com.lottery.bossex.http.VolleyResponse;
 import com.lottery.bossex.model.ImpSendSms;
 import com.lottery.bossex.tools.MyTimer;
 import com.lottery.bossex.tools.NoDoubleClickListener;
+import com.lottery.bossex.tools.PreferenceHelper;
 import com.lottery.bossex.tools.ShadowUtils;
+import com.lottery.bossex.tools.SignUtils;
 import com.lottery.bossex.tools.ToastUtils;
 import com.lottery.bossex.ui.BaseActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -94,7 +109,35 @@ public class ShimingRenzhengActivity extends BaseActivity {
                 } else if (mEtAccount.getText().toString() == null || mEtAccount.getText().toString().equals("")) {
                     ToastUtils.showToast(ac, res.getString(R.string.inputyp));
                 } else {
+                    dialog.show();
+                    Map<String, Object> params = new HashMap<>();
+                    params.put("userId", PreferenceHelper.readString(ac, "lottery", "userid", ""));
+                    params.put("code", mEtCode.getText().toString());
+                    params.put("name",mEtName.getText().toString());
+                    params.put("IDCardNumber",mEtSfz.getText().toString());
+                    params.put("bankCardNumber",mEtBankcard.getText().toString());
+                    params.put("openingBank",mEtSkbank.getText().toString());
+                    VolleyResponse.instance().getVolleyResponse(ac, UrlTools.obtainUrl("user/authentication"), SignUtils.obtainAllMap(ac, params), new InterfaceBack() {
+                        @Override
+                        public void onResponse(Object response) {
+                            try {
+                                dialog.dismiss();
+                                JSONObject jso = new JSONObject(response.toString().replace("//", ""));
+                                Gson gson = new Gson();
+                                Type listType = new TypeToken<List<HomeBannerMsg>>() {
+                                }.getType();
+                                List<HomeBannerMsg> sllist = gson.fromJson(jso.getString("data"), listType);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
 
+                        }
+
+                        @Override
+                        public void onErrorResponse(Object msg) {
+                            dialog.dismiss();
+                        }
+                    });
                 }
             }
         });

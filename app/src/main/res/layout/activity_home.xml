@@ -4,6 +4,8 @@
               android:layout_height="match_parent"
               android:background="@color/white"
               android:fitsSystemWindows="true"
+              android:focusableInTouchMode="true"
+              android:focusable="true"
               android:orientation="vertical"
     >
 
@@ -71,21 +73,11 @@
 
             </LinearLayout>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerview"
+            <com.youth.banner.Banner
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/banner"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_163"
-                android:layout_marginLeft="@dimen/dp_14"
-                ></android.support.v7.widget.RecyclerView>
-
-            <LinearLayout
-                android:id="@+id/ll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/dp_14"
-                android:orientation="horizontal"
-                ></LinearLayout>
+                android:layout_height="@dimen/dp_163"/>
 
             <TextView
                 android:layout_width="wrap_content"

@@ -12,6 +12,7 @@ import com.lottery.bossex.http.UrlTools;
 import com.lottery.bossex.http.VolleyResponse;
 import com.lottery.bossex.tools.ActivityStack;
 import com.lottery.bossex.tools.NoDoubleClickListener;
+import com.lottery.bossex.tools.PreferenceHelper;
 import com.lottery.bossex.tools.ShadowUtils;
 import com.lottery.bossex.tools.SignUtils;
 import com.lottery.bossex.tools.ToastUtils;
@@ -70,14 +71,16 @@ public class LoginActivity extends BaseActivity {
         mRlLogin.setOnClickListener(new NoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View view) {
+                Intent intent = new Intent(ac, HostFragmentActivity.class);
+                startActivity(intent);
+                finish();
+
                 if (mEtLoginAccount.getText().toString().equals("")) {
                     ToastUtils.showToast(ac, res.getString(R.string.input_account));
                 } else if (mEtLoginPassword.getText().toString().equals("")) {
                     ToastUtils.showToast(ac, res.getString(R.string.input_password));
                 } else {
                     dialog.show();
-//                    "userName":"343848758@qq.com",
-//                            "password":"832hisss"
                     Map<String, Object> params = new HashMap<>();
                     params.put("userName", mEtLoginAccount.getText().toString());
                     params.put("password", mEtLoginPassword.getText().toString());
@@ -85,7 +88,9 @@ public class LoginActivity extends BaseActivity {
                         @Override
                         public void onResponse(Object response) {
                             try {
-                                JSONObject jso=new JSONObject(response.toString());
+                                dialog.dismiss();
+                                JSONObject jso = new JSONObject(response.toString());
+                                PreferenceHelper.write(ac,"lottery","userid","");
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -95,7 +100,7 @@ public class LoginActivity extends BaseActivity {
 
                         @Override
                         public void onErrorResponse(Object msg) {
-
+                            dialog.dismiss();
                         }
                     });
                 }

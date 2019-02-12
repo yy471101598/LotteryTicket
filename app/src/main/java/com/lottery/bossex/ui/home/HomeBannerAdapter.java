@@ -7,12 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-
-import java.util.List;
-
 import com.lottery.bossex.R;
 import com.lottery.bossex.bean.HomeBannerMsg;
 import com.lottery.bossex.http.VolleyResponse;
+
+import java.util.List;
 
 /**
  * Created by songxiaotao on 2017/12/29.
@@ -42,7 +41,7 @@ public class HomeBannerAdapter extends RecyclerView.Adapter<HomeBannerAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
         HomeBannerMsg sf = datas.get(position);
 
-        VolleyResponse.instance().getInternetImg(context, sf.image, holder.img, R.mipmap.messge_nourl);
+        VolleyResponse.instance().getInternetImg(context, sf.img, holder.img, R.mipmap.messge_nourl);
         holder.itemView.setTag(position);
 
     }

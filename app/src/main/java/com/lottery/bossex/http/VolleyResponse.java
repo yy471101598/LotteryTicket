@@ -117,17 +117,17 @@ public class VolleyResponse {
                     public void onResponse(JSONObject response) {
                         // Log.v("tag", "返回的信息detail -> " +
                         // response.toString());
-                        LogUtils.d("xxres", response.toString());
+                        LogUtils.d("xxres", response.toString().replace("//", ""));
                         try {
                             if (response.getInt("status") == 0) {
-                                back.onResponse(response.getString("data"));
+                                back.onResponse(response.toString());
                             } else {
-    //                        if (jso.getInt("status") == 106) {
-    //                            PreferenceHelper.write(ac, "carapp", "token", "");
-    //                            ActivityStack.create().finishAllActivity();
-    //                            Intent intent = new Intent(ac, LoginActivity.class);
-    //                            ac.startActivity(intent);
-    //                        }
+                                //                        if (jso.getInt("status") == 106) {
+                                //                            PreferenceHelper.write(ac, "carapp", "token", "");
+                                //                            ActivityStack.create().finishAllActivity();
+                                //                            Intent intent = new Intent(ac, LoginActivity.class);
+                                //                            ac.startActivity(intent);
+                                //                        }
                                 back.onErrorResponse("");
                                 ToastUtils.showToast(context, response.getString("msg"));
                             }
