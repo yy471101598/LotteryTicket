@@ -27,6 +27,8 @@
     <color name="white_loading">#00ffffff</color>
     <color name="white">#ffffff</color>
     <color name="buychose">#F45B34</color>
+    <color name="frend_yel">#FFD83D</color>
+    <color name="frend">#F96239</color>
     <color name="theme_color">#FA703C</color>
     <color name="origecolor">#FF5D4B</color>
     <color name="tixianyellow">#FFC53D</color>

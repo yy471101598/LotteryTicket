@@ -12,6 +12,7 @@ import com.lottery.bossex.tools.NoDoubleClickListener;
 import com.lottery.bossex.ui.BaseActivity;
 import com.lottery.bossex.ui.HostActivity;
 import com.lottery.bossex.ui.LoginActivity;
+import com.lottery.bossex.ui.me.order.OrderDetailActivity;
 import com.lottery.bossex.views.RoundImageView;
 
 import butterknife.Bind;

@@ -92,7 +92,7 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.lottery.bossex.ui.me.OrderDetailActivity"
+            android:name="com.lottery.bossex.ui.me.order.OrderDetailActivity"
             android:exported="false"
             android:label="@string/app_name"
             android:screenOrientation="portrait"/>

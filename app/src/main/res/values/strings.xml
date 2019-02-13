@@ -19,4 +19,12 @@
     <string name="kaijiang">开奖</string>
     <string name="me">我的</string>
     <string name="aginout">再按一次退出</string>
+    <string name="allorder">全部订单</string>
+    <string name="winningorder">中奖订单</string>
+    <string name="waitorder">待开奖订单</string>
+    <string name="inputproble">输入的问题为空</string>
+    <string name="frendtitle">邀请好友赢现金</string>
+    <string name="frendmsg">推荐的好友完成悬赏可获得其赏金的 8% 奖励</string>
+    <string name="frend_lj">累计金额</string>
+    <string name="mycode">我的邀请码</string>
 </resources>
